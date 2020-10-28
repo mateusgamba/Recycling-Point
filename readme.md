@@ -4,6 +4,8 @@ Recycling Point is a platform focused on helping people find a recycling point n
 
 Try out the [Demo](https://recycling-point.netlify.app/).
 
+![](https://repository-images.githubusercontent.com/308050805/46ac1100-1928-11eb-9cc8-0f35c5a01b95)
+
 This project also aims to present some technologies and development methods. It was developed in an easy way, therefore, making updates more easily. You can find more details below.
 
 The project consists of two modules:
