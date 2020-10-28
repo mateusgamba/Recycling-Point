@@ -1,0 +1,29 @@
+name: web-deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: 'Web Deploy'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: cd web && npm install
+
+      - name: Install netlify-cli
+        run: cd web && ls -l && sudo npm install netlify-cli -g
+
+      - name: Build
+        run: cd web && npm run build
+
+      - name: Deploy Site
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: cd web && netlify link && ls -l && netlify deploy --dir=build -p --open

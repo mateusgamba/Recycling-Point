@@ -1,0 +1,56 @@
+version: "2"
+
+services:
+  web:
+    container_name: recpoint-web
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./web:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run start
+    stdin_open: true
+    networks:
+      - recpoint-network
+
+  server:
+    container_name: recpoint-server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run dev
+    networks:
+      - recpoint-network
+    depends_on:
+      - db
+
+  db:
+    container_name: recpoint-db
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: recpoint-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespass
+      PGDATA: /data/postgres
+    volumes:
+      - recpoint-volume:/data/postgres
+    networks:
+      - recpoint-network
+
+volumes:
+  recpoint-volume:
+    driver: local
+
+networks:
+  recpoint-network:
+    driver: bridge

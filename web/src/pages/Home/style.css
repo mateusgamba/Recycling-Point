@@ -1,0 +1,35 @@
+.page-home {
+  height: 100vh;
+  background: url('../../assets/home-background.jpg') no-repeat right;
+  background-size: cover;
+  min-width: 100%;
+  min-height: 100%;
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.page-home:before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 0; bottom: 0;
+  background: rgba(255,255,255,.5);
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.page-home main {
+  margin-top: 20vh;
+}
+
+.page-home p {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+@media (max-width: 992px) {
+  .page-home main {
+    margin-top: 15vh;
+  }
+}

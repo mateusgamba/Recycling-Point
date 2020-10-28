@@ -1,0 +1,44 @@
+{
+  "name": "node-sequelize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsnd --transpile-only --ignore-watch node_modules --respawn src/server",
+    "build": "tsc",
+    "serve": "node dist/server.js",
+    "start": "npm run serve",
+    "postinstall": "rm -rf dist && npm run build && npm run migration",
+    "migration": "sequelize db:migrate",
+    "fresh": "sequelize db:migrate:undo:all"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.773.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
+    "node-geocoder": "^3.27.0",
+    "pg": "^8.3.3",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5",
+    "yup": "^0.29.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.8",
+    "@types/express": "^4.17.8",
+    "@types/multer": "^1.4.4",
+    "@types/multer-s3": "^2.7.8",
+    "@types/node-geocoder": "^3.24.1",
+    "@types/sequelize": "^4.28.9",
+    "@types/yup": "^0.29.8",
+    "sequelize-cli": "^6.2.0",
+    "ts-node-dev": "^1.0.0-pre.63",
+    "typescript": "^4.0.3"
+  }
+}

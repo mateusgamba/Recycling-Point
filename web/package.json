@@ -1,0 +1,52 @@
+{
+  "name": "recycling-point-web",
+  "version": "1.0.0",
+  "author": "Mateus Gamba",
+  "license": "MIT",
+  "description": "Recycling Point is a platform focused on helping people find a recycling point nearby.",
+  "private": false,
+  "dependencies": {
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.5.2",
+    "leaflet": "^1.7.1",
+    "query-string": "^6.13.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-dropzone": "^11.0.1",
+    "react-icons": "^3.11.0",
+    "react-leaflet": "^2.8.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "react-toastify": "^6.0.8",
+    "reactstrap": "^8.5.1",
+    "typescript": "~3.7.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/react-leaflet": "^2.5.1",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/reactstrap": "^8.5.1"
+  }
+}

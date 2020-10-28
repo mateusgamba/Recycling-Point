@@ -1,0 +1,70 @@
+.page-points-background {
+  position: absolute;
+  background-color: #F0F0F5;
+  min-width: 100%;
+  height: 15rem;
+}
+
+.page-points main {
+  background: white;
+  width: 100%;
+  border-radius: 25px;
+  padding: 3rem;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+  margin-bottom: 100px;
+}
+
+.page-points main .card p {
+  margin-bottom: 0.4rem;
+}
+
+.page-points main .card .card-header {
+  padding: .75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: white;
+  border-bottom: 0;
+}
+
+.page-points main .card .card-header h5 {
+  margin-bottom: 0;
+}
+
+.page-points main .card .card-body p:last-child {
+  margin-bottom: 0;
+}
+
+.page-points main .card .card-footer {
+  padding: 0 1.25rem .75rem 1.25rem;
+  background-color: white;
+  border-top: 0;
+}
+
+.page-points .badge-recycle {
+  margin-right: 10px;
+  padding: 5px 10px;
+  font-size: 16px;
+  font-weight: 300;
+  border: 1px solid var(--title-color);
+  border-radius: 3px;
+  background-color: transparent;
+  color: var(--title-color);
+  margin-bottom: 10px;
+}
+
+.link-whatsapp {
+  margin-top: -5px;
+  margin-left: 5px;
+  color: #3EBB71;
+}
+
+a.link-city {
+  color: #007bff;
+}
+
+.filter {
+  padding-bottom: 35px;
+}
+
+.filter .filter-icon-localtion {
+  font-size: 25px;
+}

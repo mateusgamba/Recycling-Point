@@ -1,0 +1,19 @@
+name: server-deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: 'Server Deploy'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.0.5 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "recycling-point-api" # YOUR APP NAME
+          heroku_email: "mateusgamba@gmail.com" # YOUR EMAIL
+          appdir: "server" #OPTIONAL. This is useful if the api you're deploying is in a subfolder
