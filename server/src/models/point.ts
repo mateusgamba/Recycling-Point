@@ -9,7 +9,7 @@ export interface PointAttributes {
   whatsapp?: string;
   zip?: string;
   street: string;
-  number?: number;
+  number: number | null | undefined;
   city: string;
   province?: string;
   country: string;
