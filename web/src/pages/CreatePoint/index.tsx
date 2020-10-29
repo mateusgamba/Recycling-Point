@@ -4,12 +4,13 @@ import {
   Container,
   Row,
   Col,
-  Button,
   Form,
   FormGroup,
   Label,
   Input,
-  FormFeedback} from 'reactstrap';
+  FormFeedback,
+  Spinner
+} from 'reactstrap';
 import { toast } from 'react-toastify';
 import api from '../../services/api';
 import Dropzone from '../../components/Dropzone';
@@ -34,6 +35,7 @@ const CreatePoint = () => {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [selectedFile, setSelectedFile] = useState<File>();
   const [error, setError] = useState();
+  const [btnSave, setBtnSave] = useState<boolean>(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -95,6 +97,8 @@ const CreatePoint = () => {
       data.append('image', selectedFile);
     }
 
+    setBtnSave(true);
+
     api.post('points', data)
       .then(() => {
         notify(1, 'Thank you for subscribing!');
@@ -107,7 +111,7 @@ const CreatePoint = () => {
           window.scrollTo(0, 0);
           notify(0, 'Please check the indicated fields and fix any errors before continuing.');
         }
-        console.log(error.response.status);
+        setBtnSave(false);
       });
   }
 
@@ -131,7 +135,7 @@ const CreatePoint = () => {
           </legend>
 
           <FormGroup>
-            <Label for="name" className={ error?.name && (`text-danger`)}>Personal Name or Company name</Label>
+            <Label for="name" className={ error?.name && (`text-danger`)}>Personal or Company name</Label>
             <Input name="name" onChange={handleInputChange} invalid={Boolean(error?.name) ? true : false}/>
             <FormFeedback>{error?.name}</FormFeedback>
           </FormGroup>
@@ -159,19 +163,18 @@ const CreatePoint = () => {
           </legend>
 
           <Row form>
+          <Col md={4}>
+              <FormGroup>
+                <Label for="number" className={ error?.number && (`text-danger`)}>Number</Label>
+                <Input type="number" name="number" onChange={handleInputChange} invalid={error?.number ? true : false}/>
+                <FormFeedback>{error?.number}</FormFeedback>
+              </FormGroup>
+            </Col>
             <Col md={8}>
               <FormGroup>
                 <Label for="street" className={ error?.street && (`text-danger`)}>Street name</Label>
                 <Input name="street" onChange={handleInputChange} invalid={error?.street ? true : false}/>
                 <FormFeedback>{error?.street}</FormFeedback>
-              </FormGroup>
-            </Col>
-
-            <Col md={4}>
-              <FormGroup>
-                <Label for="number" className={ error?.number && (`text-danger`)}>Number</Label>
-                <Input type="number" name="number" onChange={handleInputChange} invalid={error?.number ? true : false}/>
-                <FormFeedback>{error?.number}</FormFeedback>
               </FormGroup>
             </Col>
           </Row>
@@ -243,7 +246,10 @@ const CreatePoint = () => {
           <Dropzone onFileUploaded={setSelectedFile} />
 
           <div className="my-4 d-flex justify-content-end">
-            <Button color="primary btn-sm-block" size="lg" className="px-5">Save</Button>
+            <button type="submit" className="btn btn-primary btn-lg px-5 btn-sm-block" disabled={btnSave}>
+              {btnSave && (<span className="spinner-border mr-2" style={{width: "1.5rem", height: "1.5rem"}}></span>)}
+              Save
+            </button>
           </div>
         </Form>
       </Container>

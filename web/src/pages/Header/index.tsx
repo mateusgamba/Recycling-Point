@@ -27,7 +27,7 @@ const Header: React.FC<Props> = ({ pageName }) => {
             {pageName==="home" ? (
               <Button color="primary btn-register" onClick={() => pageTo('/create-point')}>Register a Point</Button>
             ) : (
-              <Button outline color="secondary btn-recycle" onClick={() => pageTo('/')}>Go home</Button>
+              <Button outline color="secondary btn-recycle" onClick={() => pageTo('/')}>Home</Button>
             )}
           </Col>
         </Row>
