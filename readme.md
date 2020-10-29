@@ -144,20 +144,20 @@ docker-compose exec web sh
 
 ## Deploy
 
-The deploy process is split into 2 parts. The first part, the server, is deploying to [Heroku](https://www.heroku.com/) and the second, the web, is deploying to [Netlify](https://www.netlify.com/).
+The deployment process is split into 2 parts. The first part, the server, is deploying to [Heroku](https://www.heroku.com/) and the second, the web, is deploying to [Netlify](https://www.netlify.com/).
 
-The deploy is using [GitHub Actions](https://docs.github.com/en/actions), you can see its configuration on `.github/workflows/`.
+The deployment is using [GitHub Actions](https://docs.github.com/en/actions), you can see its configuration on `.github/workflows/` folder.
 
-The `server-deploy.yml` file provides the deploy of the Server to Heroku, whereas the `web-deploy` file provides the deploy of the Web to Netlify. You can find more details about workflow in [Configuring a workflow documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow).
+The `server-deploy.yml` file provides the deployment of the Server to Heroku, whereas the `web-deploy` file provides the deployment of the Web to Netlify. You can find more details about workflow in [Configuring a workflow documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow).
 
-Before starting to deployment, you need to set some configurations, you can read the details below:
+Before starting the deployment, you need to set some configurations, you can read the details below:
 
 ### Server
 
-You must create an account on Heroku through [Heroku website](https://signup.heroku.com/) and after installing [Heroku Cli](https://devcenter.heroku.com/articles/heroku-cli) in your computer.
+You must create an account on Heroku through [Heroku website](https://signup.heroku.com/) and after you must install [Heroku Cli](https://devcenter.heroku.com/articles/heroku-cli) in your computer.
 
-To create a new app and database, run the following command:
-> Please, update from INSERT_YOUR_APP_NAME to your app name
+To create a new app and a database, run the following command:
+> Please, replace your INSERT_YOUR_APP_NAME to your App name
 
 **Creating a new App**
 ```
@@ -186,17 +186,17 @@ heroku config:set GET_APIKEY=[ADD YOUR API KEY FROM https://developer.mapquest.c
 
 The `DATABASE_URL` environment variable already is added automatically when the database is created.
 
-In order to build or deploy via GitHub, you will be to authenticate via an OAuth token.
+In order the build or deploy via GitHub, you have to be to authenticate via an OAuth token.
 
 To create an OAuth authorisation, on your local machine, run:
 ```
 heroku authorizations:create.
 ```
-This command will return a few information, please, copy only the Token value.
+This command will return a few pieces of information, please, copy only the Token value.
 
 In your repository, click on **Setting -> Secrets**.
 
-Within Secrets, create a New secret, HEROKU_API_KEY, and insert the token given by the Heroku CLI.
+Within Secrets page, you must create a New secret, HEROKU_API_KEY, and insert the token given by the Heroku CLI.
 
 ### Web
 
@@ -212,7 +212,7 @@ Then you need to obtain a `Token` in the Netlify UI. You can generate an access 
 
 4. You must set secret token for your repository on Github by going to **Setting -> Secrets**.
 
-5. Click on `New Secret` button, paste the access token in `Value` input and the `Name field` enter NETLIFY_AUTH_TOKEN after save it.
+5. Click on `New Secret` button, paste the access token in `Value` input and the `Name field` enter NETLIFY_AUTH_TOKEN then save it.
 
 After you need to create a new application on Netlify, run the following commands to setting up the netlify-cli:
 
@@ -226,7 +226,7 @@ Sign in via command line:
 docker-compose exec web netlify login
 ```
 
-A link will be returned, please, click about it and log in.
+A link will be returned, please, click on it and log in.
 
 Run:
 ```
@@ -239,14 +239,14 @@ Awnser the following questions:
 > Yes, create and deploy site manually
 ```
 
-Please, replace from APPLICATION-NAME to name of the your application.
+Please, replace the APPLICATION-NAME to the name of your application.
 
 ```
 Choose a unique site name (e.g. super-cool-site-by-mateusgamba.netlify.app) or leave it blank for a random name. You can update the site name later?
 Site name (optional): {APPLICATION-NAME}
 ```
 
-Then the folling information must be returned:
+Then the following information must be returned:
 
 ```
 Site Created
