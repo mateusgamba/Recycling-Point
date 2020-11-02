@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Col, Row, Card, CardBody } from 'reactstrap';
-import { useHistory } from 'react-router-dom';
-import { Country, City } from './types';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Col, Row } from 'reactstrap';
+import { Country } from './types';
 import api from '../../services/api';
+import CardDetail from './CardDetail';
 
 const FilterPoint = ({modal, toggleModalFilterPoint}) => {
-  const history = useHistory();
-
   const [countries, setCountries] = useState<Country[]>([]);
+  const [load, setLoad] = useState<boolean>(false);
 
   function closeModalFilterPoint() {
     toggleModalFilterPoint(false)
-  }
-
-  function pageToPoints(country, city) {
-    history.push(`/points?country=${country}&city=${city}`);
-    closeModalFilterPoint();
   }
 
   useEffect(() => {
@@ -28,6 +22,7 @@ const FilterPoint = ({modal, toggleModalFilterPoint}) => {
         });
       });
       setCountries(countriesSerialized);
+      setLoad(true);
     });
   }, []);
 
@@ -36,27 +31,21 @@ const FilterPoint = ({modal, toggleModalFilterPoint}) => {
       <ModalHeader toggle={closeModalFilterPoint}>Choose a city</ModalHeader>
       <ModalBody>
         <Row>
-          {countries.map((country: Country) => (
-            <Col sm="12" lg="6" className="mb-5" key={country.name}>
-              <Card className="border-0">
-                <p className="card-header bg-transparent pl-1" style={{fontWeight:700}}>
-                  {country.name}
-                </p>
-
-                <CardBody className="p-0">
-                  <ul className="list-group list-group-flush">
-                    {country.cities.map((city: City) => (
-                      <li className="list-group-item pl-1" key={city.city}>
-                        <button className="btn btn-link p-0 cursor-pointer" onClick={() =>pageToPoints(country.name, city.city) }>
-                          {city.city}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </CardBody>
-              </Card>
-            </Col>
-          ))}
+          {load ?
+            countries.map((country: Country) => (
+              <Col sm="12" lg="6" className="mb-5" key={country.name}>
+                <CardDetail country={country} closeModalFilterPoint={closeModalFilterPoint} />
+              </Col>
+            )) : (
+              <Col sm="12" className="my-3">
+                <div className="d-flex justify-content-center">
+                  <div className="spinner-border">
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                </div>
+              </Col>
+            )
+          }
         </Row>
       </ModalBody>
       <ModalFooter>
