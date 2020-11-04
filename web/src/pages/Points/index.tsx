@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
-import queryString from 'query-string';
 import api from '../../services/api';
 import Header from '../Header';
 import CardDetail from './CardDetail';
@@ -9,22 +9,16 @@ import FilterBarCity from './FilterBarCity';
 import { Point } from '../../types/Point';
 import './style.css';
 
-interface Search {
-  search?: string;
-}
-
-interface PointsProps {
-  location?: Search;
-}
-
-const Points: React.FC<PointsProps> = ({ location }) => {
+const Points: React.FC = () => {
   const [points, setPoints] = useState<Point[]>([]);
   const [modalMap, setModalMap] = useState<boolean>(false);
   const [pointModalMap, setPointModalMap] = useState<Point>();
   const [city, setCity] = useState<string>();
 
+  const location = useLocation();
+
   useEffect(() => {
-    const params = queryString.parse(location?.search ?? '');
+    const params = new URLSearchParams(location.search);
     api
       .get('points', {
         params,
@@ -33,8 +27,8 @@ const Points: React.FC<PointsProps> = ({ location }) => {
         setPoints(response.data);
       });
 
-    setCity(`${params.city} (${params.country})`);
-  }, [location?.search]);
+    setCity(`${params.get('city')} (${params.get('country')})`);
+  }, [location]);
 
   function toggleModalMap(modal = true, point?: Point): void {
     setModalMap(modal);
