@@ -1,8 +1,8 @@
 import React from 'react';
-import Routes from './routes'
+import Routes from './routes';
 import { ToastContainer } from 'react-toastify';
 
-function App() {
+const App: React.FC = () => {
   return (
     <>
       <Routes />
@@ -15,6 +15,6 @@ function App() {
       />
     </>
   );
-}
+};
 
 export default App;

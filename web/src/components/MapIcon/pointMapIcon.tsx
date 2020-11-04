@@ -1,5 +1,5 @@
-import Leaflet from "leaflet";
-import mapIcon from "../../assets/mapIcon.svg";
+import Leaflet from 'leaflet';
+import mapIcon from '../../assets/image/mapIcon.svg';
 
 const pointMapIcon = Leaflet.icon({
   iconUrl: mapIcon,

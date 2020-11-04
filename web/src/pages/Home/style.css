@@ -1,6 +1,6 @@
 .page-home {
   height: 100vh;
-  background: url('../../assets/home-background.jpg') no-repeat right;
+  background: url('../../assets/image/home-background.jpg') no-repeat right;
   background-size: cover;
   min-width: 100%;
   min-height: 100%;
@@ -10,11 +10,13 @@
 }
 
 .page-home:before {
-  content: "";
+  content: '';
   position: absolute;
-  left: 0; right: 0;
-  top: 0; bottom: 0;
-  background: rgba(255,255,255,.5);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5);
   min-width: 100%;
   min-height: 100%;
 }
